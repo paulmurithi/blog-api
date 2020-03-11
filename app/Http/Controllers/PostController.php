@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\PostResource;
+use App\Http\Resources\PostCollection;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return new PostCollection(Post::all());
     }
 
     /**
@@ -24,7 +27,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+        $post->user_id = $request->user_id;
+        $post->category_id = $request->category_id;
+        $post->image = $request->image;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return new PostResource($post);
     }
 
     /**
@@ -35,7 +45,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return new PostResource($post);
     }
 
     /**
@@ -47,7 +58,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->user_id = $request->user_id;
+        $post->category_id = $request->category_id;
+        $post->image = $request->image;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return new PostResource($post);
     }
 
     /**
@@ -58,6 +76,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
     }
 }
