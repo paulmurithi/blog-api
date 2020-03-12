@@ -12,6 +12,9 @@ class CommentCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+
+    public $collects = 'App\Http\Resources\CommentResource';
+
     public function toArray($request)
     {
         return parent::toArray($request);

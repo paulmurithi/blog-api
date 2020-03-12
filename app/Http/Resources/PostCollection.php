@@ -12,6 +12,9 @@ class PostCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+
+    public $collects = 'App\Http\Resources\PostResource';
+
     public function toArray($request)
     {
         return parent::toArray($request);
