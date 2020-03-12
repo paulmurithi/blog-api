@@ -16,7 +16,7 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        return new ReplyCollection(Reply::all());
+        return new ReplyCollection(Reply::paginate());
     }
 
     /**
