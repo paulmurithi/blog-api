@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Resources;
+use App\Category;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\PostCollection;
 
 class CategoryResource extends JsonResource
 {
@@ -17,7 +19,6 @@ class CategoryResource extends JsonResource
         return parent::toArray([
             'id'=>$this->id,
             'name'=>$this->name,
-            'posts'=>$this->posts_count,
             'created_at'=>$this->created_at,
             'updated_at'=>$this->updated_at
         ]);
