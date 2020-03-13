@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Request\storePost;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostCollection;
 use App\Post;
@@ -25,7 +26,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storePost $request)
     {
         $post = new Post;
         $post->user_id = $request->user_id;

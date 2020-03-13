@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\storeReply;
 use App\Http\Resources\ReplyResource;
 use App\Http\Resources\ReplyCollection;
 use App\Reply;
@@ -25,7 +26,7 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeReply $request)
     {
         $reply = new reply;
         $reply->user_id = $request->user_id;
